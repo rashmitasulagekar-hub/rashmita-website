@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rashmita Portfolio - Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg1: #0f1724;
+            --bg2: #0b1b2b;
+            --accent: #7c3aed;
+            --accent-2: #06b6d4;
+            --glass: rgba(255,255,255,0.06);
+            --text: #e6eef8;
+            --muted: #a6b3c7;
+        }
+
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            color:var(--text);
+            background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent 10%),
+                                    radial-gradient(800px 400px at 90% 90%, rgba(6,182,212,0.08), transparent 10%),
+                                    linear-gradient(180deg,var(--bg1), var(--bg2));
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            min-height:100vh;
+            scroll-behavior: smooth;
+        }
+
+        header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:18px 28px;
+            position:sticky;top:0;
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+            backdrop-filter: blur(6px);
+            z-index:30;
+            border-bottom:1px solid rgba(255,255,255,0.03);
+        }
+        .brand{
+            display:flex;gap:12px;align-items:center
+        }
+        .logo{
+            width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+            display:inline-grid;place-items:center;font-weight:700;color:white;font-family:'Roboto Mono';
+            box-shadow: 0 6px 18px rgba(12,16,30,0.6);
+        }
+        nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;transition:all .22s}
+        nav a:hover{color:var(--text);transform:translateY(-2px)}
+
+        main{max-width:1100px;margin:48px auto;padding:0 20px}
+
+        .hero{
+            display:grid;grid-template-columns: 360px 1fr;gap:28px;align-items:center;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            padding:28px;border-radius:16px;box-shadow: 0 10px 40px rgba(3,8,23,0.6);
+        }
+
+        .hero .left{
+            display:flex;flex-direction:column;align-items:center;padding:6px;
+        }
+        .profile-img{
+            width:320px;height:360px;object-fit:cover;border-radius:14px;border:4px solid rgba(255,255,255,0.06);
+            box-shadow: 0 18px 50px rgba(2,6,23,0.6);transform:translateY(10px);opacity:0;
+            transition:transform .6s cubic-bezier(.22,.9,.3,1), opacity .6s;
+        }
+        .left .card{
+            margin-top:18px;padding:10px 14px;border-radius:12px;background:var(--glass);width:100%;text-align:center;color:var(--muted);
+            font-size:14px;border:1px solid rgba(255,255,255,0.03)
+        }
+
+        .hero .right h1{font-size:34px;margin:0 0 8px 0;line-height:1.05}
+        .gradient-text{
+            background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;
+            font-weight:700;
+            display:inline-block;padding-right:8px
+        }
+
+        .lead{color:var(--muted);font-size:17px;margin-bottom:18px}
+
+        .cta{display:inline-flex;gap:12px}
+        .btn{
+            padding:10px 16px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),#5eead4);
+            color:#032;cursor:pointer;font-weight:700;box-shadow: 0 8px 30px rgba(124,58,237,0.15);transition:transform .18s, box-shadow .18s;
+        }
+        .btn:active{transform:translateY(1px)}
+        .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+
+        .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+        .chip{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted);border:1px solid rgba(255,255,255,0.03);transform:translateY(8px);opacity:0;transition:all .45s}
+
+        footer{color:var(--muted);text-align:center;padding:40px 10px}
+
+        /* reveal animations */
+        .reveal{opacity:0;transform:translateY(18px);transition:all .6s cubic-bezier(.2,.9,.3,1)}
+        .reveal.visible{opacity:1;transform:none}
+
+        /* small screens */
+        @media (max-width:880px){
+            .hero{grid-template-columns:1fr;align-items:center}
+            .profile-img{width:260px;height:300px}
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="logo">RS</div>
+            <div>
+                <div style="font-weight:700">Rashmita Sulagekar</div>
+                <div style="font-size:12px;color:var(--muted)">Web Developer • Designer</div>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="biodata.html">Biodata</a>
+            <a href="resume.html">Resume</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+                    <div class="left">
+                        <img src="rashmita photo.jpg" alt="Rashmita smiling" class="profile-img" id="profileImg">
+                    </div>
+
+            <div class="right">
+                <h1 class="reveal">Hi, I'm <span class="gradient-text">Rashmita</span></h1>
+                <div class="lead reveal" id="typedLead">I build delightful web experiences.</div>
+
+                <div class="cta reveal">
+                    <a href="resume.html"><button class="btn">View Resume</button></a>
+                    <a href="biodata.html"><button class="btn ghost">Biodata</button></a>
+                </div>
+
+                <!-- Skills removed as requested -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer removed as requested -->
+
+    <script>
+        // small helper: reveal elements on scroll
+        const revealElems = document.querySelectorAll('.reveal');
+        const chips = document.querySelectorAll('.chip');
+        const profile = document.getElementById('profileImg');
+
+        const io = new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                    io.unobserve(entry.target);
+                }
+            })
+        },{threshold:0.12});
+
+        revealElems.forEach(el=>io.observe(el));
+1
+        // stagger reveal for chips
+        chips.forEach((c,i)=>{
+            setTimeout(()=>{c.style.transform='none';c.style.opacity='1'}, 220 + i*90);
+        });
+
+        // profile image entrance
+        window.addEventListener('load', ()=>{
+            setTimeout(()=>{profile.style.transform='none';profile.style.opacity='1'}, 180);
+        })
+
+        // small typed effect for the lead paragraph
+        (function typed(el, phrases, delay=120){
+            if(!el) return; let i=0, j=0, forward=true;
+            function tick(){
+                el.textContent = phrases[i].slice(0,j);
+                if(forward){
+                    if(j++ === phrases[i].length){ forward=false; setTimeout(tick,800); return }
+                } else {
+                    if(j-- === 0){ forward=true; i=(i+1)%phrases.length }
+                }
+                setTimeout(tick, forward?delay:40);
+            }
+            tick();
+        })(document.getElementById('typedLead'), [
+            'I build delightful web experiences.',
+            'I focus on accessible and responsive design.',
+            'I love animations, performance and clean code.'
+        ], 40);
+
+        // footer year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
